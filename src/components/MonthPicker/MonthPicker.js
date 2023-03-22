@@ -1,4 +1,5 @@
 import moment from "moment";
+import 'moment/min/locales';
 import React, { useState, useEffect } from "react";
 import { Selected, SelectedText, TitleWrapper } from "./MonthPicker.styled";
 import Selector from "./Selector/Selector";
@@ -11,6 +12,8 @@ const MonthPicker = ({
   presets,
   description,
   emptyDescription,
+  startDate,
+  endDate,
   locale,
   style,
   closeDelay,
@@ -20,6 +23,8 @@ const MonthPicker = ({
   const [title, setTitle] = useState(false);
 
   useEffect(() => {
+    moment.locale(locale)
+
     updateTitle(value);
   }, []);
 
@@ -83,7 +88,8 @@ const MonthPicker = ({
         <Selector
           description={description}
           presets={presets}
-          locale={locale}
+          startDate={startDate}
+          endDate={endDate}
           onChange={localChange}
           highlightCol={highlightCol}
         />

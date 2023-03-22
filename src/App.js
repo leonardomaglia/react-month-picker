@@ -32,6 +32,8 @@ function App() {
         description='Bla'
         emptyDescription='Nada selecionado'
         locale='pt-br'
+        startDate={new Date('2010-02')}
+        endDate={new Date('2020-10')}
         presets={presets}
         onChange={(range) => console.log(range)}
         closeDelay={500}

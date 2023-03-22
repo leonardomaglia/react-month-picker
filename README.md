@@ -33,9 +33,11 @@ The most basic use:
 | `closeDelay`   | `int`    | Delay in ms before pop-up window closes                                                                                                       |
 | `value`        | `array`  | Starting dates: `[startDate, endDate]`                                                                                                        |
 | `highlightCol` | `string` | Colour of selected months                                                                                                                     |
-| `locale` | `string` | Date locale                                                                                                                     |
-| `description` | `string` | Description inside the card                                                                                                                     |
-| `emptyDescription` | `string` | Placeholder when range is not selected                                                                                                                     |
+| `locale`       | `string` | Date locale                                                                                                                                   |
+| `description`  | `string` | Description inside the card                                                                                                                   |
+| `emptyDescription` | `string` | Placeholder when range is not selected                                                                                                    |
+| `startDate`    | `date`   | Used to define the start date of the selector                                                                                                 |
+| `endDate`      | `date`   | Used to define the end date of the selector                                                                                                 |
 
 ## Usage Example
 
@@ -87,6 +89,8 @@ function App() {
         locale='pt-BR'
         description='Test'
         emptyDescription='No range selected'
+        startDate={new Date('2010-02')}
+        endDate={new Date('2020-10')}
         onChange={(range) => console.log(range)}
         closeDelay={500}
       />

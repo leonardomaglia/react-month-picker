@@ -1,6 +1,6 @@
 {
   "name": "simple-react-month-range-picker",
-  "version": "0.2.6",
+"version": "0.2.9",
   "private": false,
   "babel": {
     "presets": [

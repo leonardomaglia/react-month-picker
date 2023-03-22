@@ -1,4 +1,5 @@
 import moment from "moment";
+import 'moment/min/locales';
 import React, { memo, useState, useEffect } from "react";
 import {
   Modal,
@@ -17,14 +18,18 @@ import {
   faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Selector = ({ presets, onChange, highlightCol, description, locale }) => {
+const Selector = ({ presets, onChange, highlightCol, description, startDate, endDate }) => {
   const [yearIndex, setYearIndex] = useState(0);
   const [years, setYears] = useState([]);
   const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     let ys = [];
-    for (let year = 1990; year <= Number(moment().format("YYYY")); year++) {
+
+    const start = startDate ? moment(startDate).format("YYYY") : 1990;
+    const end = endDate ? moment(endDate).format("YYYY") : Number(moment().format("YYYY"));
+
+    for (let year = start; year <= end; year++) {
       const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((month) => {
         let date = moment(year + "-" + month + "-01 00:00:00").toDate();
         return {
@@ -124,11 +129,11 @@ const Selector = ({ presets, onChange, highlightCol, description, locale }) => {
                     ? "selected"
                     : ""
                 }
-                disabled={moment(m.date).isAfter(moment().endOf("month"))}
+                disabled={moment(m.date).isBefore(moment(startDate).endOf("month")) || moment(m.date).isAfter(moment(endDate).endOf("month"))}
                 key={i}
                 onClick={(e) => setSelectedLocal(i, m)}
               >
-                {m.selected} {m.date.toLocaleDateString(locale, { month: 'short' })}
+                {m.selected} {moment(m.date).format("MMM")}
               </Month>
             );
           })}
