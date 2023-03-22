@@ -7,7 +7,9 @@ import { faChevronCircleLeft, faChevronCircleRight } from "@fortawesome/free-sol
 const Selector = ({
   presets,
   onChange,
-  highlightCol
+  highlightCol,
+  description,
+  locale
 }) => {
   const [yearIndex, setYearIndex] = useState(0);
   const [years, setYears] = useState([]);
@@ -15,7 +17,7 @@ const Selector = ({
   useEffect(() => {
     let ys = [];
 
-    for (let year = 2010; year <= Number(moment().format("YYYY")); year++) {
+    for (let year = 1990; year <= Number(moment().format("YYYY")); year++) {
       const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(month => {
         let date = moment(year + "-" + month + "-01 00:00:00").toDate();
         return {
@@ -70,7 +72,7 @@ const Selector = ({
   return /*#__PURE__*/React.createElement(Modal, null, presets && presets.length && /*#__PURE__*/React.createElement(Presets, null, /*#__PURE__*/React.createElement(Title, null, "PRESETS"), presets.map((p, i) => /*#__PURE__*/React.createElement(Preset, {
     onClick: e => pickPreset(p),
     key: i
-  }, p.title))), /*#__PURE__*/React.createElement(MonthPicker, null, /*#__PURE__*/React.createElement(Title, null, "SELECT A MONTH RANGE:"), /*#__PURE__*/React.createElement(YearPicker, null, /*#__PURE__*/React.createElement(FontAwesomeIcon, {
+  }, p.title))), /*#__PURE__*/React.createElement(MonthPicker, null, /*#__PURE__*/React.createElement(Title, null, description ? description : 'SELECT A MONTH RANGE:'), /*#__PURE__*/React.createElement(YearPicker, null, /*#__PURE__*/React.createElement(FontAwesomeIcon, {
     icon: faChevronCircleLeft,
     style: {
       width: 20,
@@ -95,7 +97,9 @@ const Selector = ({
       disabled: moment(m.date).isAfter(moment().endOf("month")),
       key: i,
       onClick: e => setSelectedLocal(i, m)
-    }, m.selected, " ", moment(m.date).format("MMM"));
+    }, m.selected, " ", m.date.toLocaleDateString(locale, {
+      month: 'short'
+    }));
   }))));
 };
 

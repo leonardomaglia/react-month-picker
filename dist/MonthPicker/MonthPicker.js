@@ -9,6 +9,9 @@ const MonthPicker = ({
   onChange,
   value,
   presets,
+  description,
+  emptyDescription,
+  locale,
   style,
   closeDelay,
   highlightCol
@@ -21,7 +24,7 @@ const MonthPicker = ({
 
   const updateTitle = v => {
     if (!v || v.length < 2) {
-      return setTitle("No dates selected");
+      return setTitle(emptyDescription ? emptyDescription : "No dates selected");
     }
 
     const presetTitle = presets && presets.length ? presets.find(p => (moment(p.start).isSame(moment(v[0]), "month") || p.start === v[0]) && (moment(p.end).isSame(moment(v[1]), "month") || p.end === v[1])) : null;
@@ -51,7 +54,9 @@ const MonthPicker = ({
       height: 14
     }
   })), selectOpen && /*#__PURE__*/React.createElement(Selector, {
+    description: description,
     presets: presets,
+    locale: locale,
     onChange: localChange,
     highlightCol: highlightCol
   }));

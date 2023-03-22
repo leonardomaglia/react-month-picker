@@ -9,6 +9,9 @@ const MonthPicker = ({
   onChange,
   value,
   presets,
+  description,
+  emptyDescription,
+  locale,
   style,
   closeDelay,
   highlightCol,
@@ -22,7 +25,7 @@ const MonthPicker = ({
 
   const updateTitle = (v) => {
     if (!v || v.length < 2) {
-      return setTitle("No dates selected");
+      return setTitle(emptyDescription ? emptyDescription : "No dates selected");
     }
 		
     const presetTitle =
@@ -78,7 +81,9 @@ const MonthPicker = ({
       </TitleWrapper>
       {selectOpen && (
         <Selector
+          description={description}
           presets={presets}
+          locale={locale}
           onChange={localChange}
           highlightCol={highlightCol}
         />

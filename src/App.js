@@ -29,6 +29,9 @@ function App() {
     <div style={{ width: 300, margin: "50px auto" }}>
       <MonthPicker
         highlightCol="#f60"
+        description='Bla'
+        emptyDescription='Nada selecionado'
+        locale='pt-br'
         presets={presets}
         onChange={(range) => console.log(range)}
         closeDelay={500}

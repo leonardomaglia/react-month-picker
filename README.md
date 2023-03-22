@@ -33,6 +33,9 @@ The most basic use:
 | `closeDelay`   | `int`    | Delay in ms before pop-up window closes                                                                                                       |
 | `value`        | `array`  | Starting dates: `[startDate, endDate]`                                                                                                        |
 | `highlightCol` | `string` | Colour of selected months                                                                                                                     |
+| `locale` | `string` | Date locale                                                                                                                     |
+| `description` | `string` | Description inside the card                                                                                                                     |
+| `emptyDescription` | `string` | Placeholder when range is not selected                                                                                                                     |
 
 ## Usage Example
 

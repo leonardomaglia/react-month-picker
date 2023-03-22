@@ -17,14 +17,14 @@ import {
   faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Selector = ({ presets, onChange, highlightCol }) => {
+const Selector = ({ presets, onChange, highlightCol, description, locale }) => {
   const [yearIndex, setYearIndex] = useState(0);
   const [years, setYears] = useState([]);
   const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     let ys = [];
-    for (let year = 2010; year <= Number(moment().format("YYYY")); year++) {
+    for (let year = 1990; year <= Number(moment().format("YYYY")); year++) {
       const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((month) => {
         let date = moment(year + "-" + month + "-01 00:00:00").toDate();
         return {
@@ -82,7 +82,7 @@ const Selector = ({ presets, onChange, highlightCol }) => {
         </Presets>
       )}
       <MonthPicker>
-        <Title>SELECT A MONTH RANGE:</Title>
+        <Title>{ description ? description : 'SELECT A MONTH RANGE:' }</Title>
         <YearPicker>
           <FontAwesomeIcon
             icon={faChevronCircleLeft}
@@ -128,7 +128,7 @@ const Selector = ({ presets, onChange, highlightCol }) => {
                 key={i}
                 onClick={(e) => setSelectedLocal(i, m)}
               >
-                {m.selected} {moment(m.date).format("MMM")}
+                {m.selected} {m.date.toLocaleDateString(locale, { month: 'short' })}
               </Month>
             );
           })}

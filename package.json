@@ -1,6 +1,6 @@
 {
   "name": "simple-react-month-range-picker",
-  "version": "0.2.1",
+  "version": "0.2.6",
   "private": false,
   "babel": {
     "presets": [
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caedmonm/react-month-picker.git"
+    "url": "git+https://github.com/leonardomaglia/react-month-picker.git"
   },
   "description": "Simple React Month Range Picker",
   "main": "dist/MonthPicker/MonthPicker.js",
