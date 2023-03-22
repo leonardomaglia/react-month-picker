@@ -46,7 +46,7 @@ https://codesandbox.io/s/simple-react-month-picker-p9uhe
 ### Code sample
 
 ```js
-import MonthPicker from "simple-react-month-picker";
+import MonthPicker from "simple-react-month-range-picker";
 ```
 
 ```jsx
@@ -84,6 +84,9 @@ function App() {
             end: null,
           },
         ]}
+        locale='pt-BR'
+        description='Test'
+        emptyDescription='No range selected'
         onChange={(range) => console.log(range)}
         closeDelay={500}
       />
