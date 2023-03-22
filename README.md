@@ -1,6 +1,6 @@
-# Simple React Month Picker
+# Simple React Month Range Picker
 
-Simple-React-Month-Picker Component offers a popup month selection panel with the option of presets or custom month ranges.
+Simple-React-Month-Range-Picker Component offers a popup month selection panel with the option of presets or custom month ranges.
 
 ## Installation
 
