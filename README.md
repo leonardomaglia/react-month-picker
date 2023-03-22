@@ -4,7 +4,7 @@ Simple-React-Month-Picker Component offers a popup month selection panel with th
 
 ## Installation
 
-`npm install simple-react-month-picker --save`
+`npm install simple-react-month-range-picker --save`
 
 ## Snapshots
 
